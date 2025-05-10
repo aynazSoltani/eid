@@ -3,6 +3,7 @@ package db;
 import db.exception.EntityNotFoundException;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Database {
     private static ArrayList<Entity> entities = new ArrayList<>();
@@ -11,9 +12,12 @@ public class Database {
     private Database() {};
 
    public static void add(Entity e){
+       
        e.id = number++;
        Entity copy = e.copy();
      entities.add(copy);
+
+
     }
     public static Entity get(int id)throws  EntityNotFoundException{
        for(Entity e: entities) {
