@@ -1,5 +1,7 @@
 import example.Human;
 import db.Database;
+import db.exception.InvalidEntityException;
+import example.HumanValidator;
 
 public class Main {
     public static void main(String[] args) throws InvalidEntityException {
