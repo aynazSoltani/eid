@@ -1,27 +1,20 @@
 package todo.validator;
 
-import db.Database;
 import db.Entity;
 import db.Validator;
 import db.exception.InvalidEntityException;
-import todo.entity.Step;
+import todo.entity.Task;
 
-public class StepValidator implements Validator {
+public class TaskValidator implements Validator {
     @Override
     public void validate(Entity entity) throws InvalidEntityException{
-        if (! (entity instanceof Step))
-            throw new IllegalArgumentException("Entity type must be Step.");
+        if (! (entity instanceof Task))
+            throw new IllegalArgumentException("Entity must be the type of Task!");
 
-        Step step = (Step) entity;
-        if (step.getTitle() == null || step.getTitle().isEmpty())
-            throw new InvalidEntityException("Title Cannot be null or empty.");
-
-        try {
-            Database.get(step.getTaskRef());
-        }
-        catch (Exception e){
-            throw new InvalidEntityException("Task with id " + step.getTaskRef() + "not found.");
-        }
+        Task task = (Task) entity;
+        if (task.getTitle() == null || task.getTitle().isEmpty())
+            throw new InvalidEntityException("Task titlle Cannot be null or empty.");
     }
+
 
 }
